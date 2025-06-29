@@ -46,10 +46,35 @@ async function rollDice() {
   return Math.floor(Math.random() * 6) + 1;
 }
 
-async function playerRaceEngine(character1, character2) {}
+async function getRandomBlock(){
+  let random = Math.random()
+  let result 
+
+  switch (true) {
+    case random < 0.33:
+      result = "Reta"
+      break;
+    case random < 0.66:
+      result = "Curva"
+      break;
+    default:
+      result = "Confronto"
+  }
+   return result
+}
+
+async function playerRaceEngine(character1, character2) {
+  for (let round = 1; round <= 5; round++) {
+    console.log(`🏁 Rodada ${round}`)
+    
+    /* Sortear bloco */
+    let block = await getRandomBlock()
+      console.log(`Bloco: ${block}`);
+  }
+}
   
 (async function main() {
- console.log(`🏁🚦  Começando uma corrida entre ${player1.name} versos ${player2.name} ...\n`);
+ console.log(`🏁🚦  Começando uma corrida ${player1.name} versos ${player2.name} ...\n`);
 
  await playerRaceEngine(player1, player2);
 })();
